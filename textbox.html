@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta name='author' content='Tom "Arctica" Alvey' />
+  <link rel="stylesheet" type="text/css" href="css2.css">
+  <script> 
+  function changecolor(input) 
+  {console.log(input.value);
+  }
+</script>
+  <title>Text Input</title>
+  </head>
+  <body>
+  <div>
+ <table border ="1">
+<tbody>
+<tr> 
+<td colspan="5">
+<textarea id="id1" cols="50" rows="10">
+</textarea>
+
+<!--
+RGB value boxes 
+!-->
+
+</td>
+<td rowspan="2">
+<input type="text" class="input">
+R
+</input>
+<input type="text" class="input">
+G
+</input>
+<input type="text" class="input">
+B
+</input>
+</td>
+</tr>
+
+
+
+
+<tr>
+<td><button type="button"><b>Bold</b></button></td>
+<td><button type="button"><i>Italic</i></button></td>
+<td><button type="button"><u>Underline<u></button></td>
+<td>Select color<br><select onchange="changecolor(this)">
+  <option class="red" value="Red">Red</option>
+  <option class="blue" value="Blue">Blue</option>
+  <option class="black" value="Black">Black</option>
+  <option class="yellow" value="Yellow">Yellow</option>
+  <option class="purple" value="Purple">Purple</option>
+  <option class="green" value="Green">Green</option>
+</select></td>
+<td>Select Font <br><select>
+  <option class="times" value="times new roman">Times new Roman</option>
+  <option class="arial" value="arial">Arial</option>
+  <option class="lucida" value="lucida sans">Lucida Sans</option>
+</select></td>
+
+</tr>
+</tbody>
+
+
+
+</div>
+
+</body>
