@@ -3,37 +3,100 @@
   <meta charset="UTF-8">
   <meta name='author' content='Tom "Arctica" Alvey' />
   <link rel="stylesheet" type="text/css" href="css2.css">
-  <script> 
-  function changecolor(input) 
-  {console.log(input.value);
+  <script>
+  function changeColor(colourval)
+  {
+      if (colourval == "Black") {
+          document.getElementById("id1").style.color="Black";
+      } else if (colourval == "Red") {
+          document.getElementById("id1").style.color="Red";
+      } else if (colourval == "Blue") {
+          document.getElementById("id1").style.color="Blue";
+      } else if (colourval == "Purple") {
+          document.getElementById("id1").style.color="Purple";
+      } else if (colourval == "Yellow") {
+          document.getElementById("id1").style.color="Yellow";
+      } else if (colourval == "Green") {
+          document.getElementById("id1").style.color="Green";
+      }
   }
+
+  function toggleBold()
+  {
+      if (document.getElementById("id1").style.fontWeight == "bold") {
+          document.getElementById("id1").style.fontWeight = "normal";
+      } else {
+          document.getElementById("id1").style.fontWeight = "bold";
+      }
+  }
+
+  function toggleItalic()
+  {
+      if (document.getElementById("id1").style.fontStyle == "italic") {
+          document.getElementById("id1").style.fontStyle = "normal";
+      } else {
+          document.getElementById("id1").style.fontStyle = "italic";
+      }
+  }
+  function toggleUnder()
+  {
+      if (document.getElementById("id1").style.textDecoration == "underline") {
+          document.getElementById("id1").style.textDecoration = "none";
+      } else {
+          document.getElementById("id1").style.textDecoration = "underline";
+      }
+  }
+  function toggleFont(fontval)
+  {
+    if (fontval == "times new roman") {  document.getElementById("id1").style.fontFamily="Times New Roman";
+      }
+      else if (fontval == "arial") {
+          document.getElementById("id1").style.fontFamily="Arial";
+  }
+  else if (fontval == "lucida sans") {
+      document.getElementById("id1").style.fontFamily="Lucida Sans";
+    }
+    else if (fontval == "courier") {
+        document.getElementById("id1").style.fontFamily="Courier New";
+      }
+}
+function changergb() 
+{ console.log(document.getElementById("id1"));
+  document.getElementById("id1").style.backgroundColor =
+  "rgb("+document.getElementById("red").value+","
+  +document.getElementById("green").value+","
+  +document.getElementById("blue").value+")";
+
+}
+
+
 </script>
   <title>Text Input</title>
   </head>
   <body>
-  <div>
- <table border ="1">
+ <table>
 <tbody>
-<tr> 
+<tr>
 <td colspan="5">
 <textarea id="id1" cols="50" rows="10">
 </textarea>
 
 <!--
-RGB value boxes 
+RGB value boxes
 !-->
 
 </td>
-<td rowspan="2">
-<input type="text" class="input">
-R
-</input>
-<input type="text" class="input">
-G
-</input>
-<input type="text" class="input">
-B
-</input>
+<td>
+  R
+    <input id="red" type="text" size="3" maxlength="3" name="r" value="0" onBlur="changergb()">
+    </td>
+    <td>
+    G
+    <input id="green" type="text" size="3" maxlength="3" name="g" value="0" onBlur="changergb()">
+    </td>
+    <td>    
+    B
+    <input id="blue" type="text" size="3" maxlength="3" name="b" value="0" onBlur="changergb()">
 </td>
 </tr>
 
@@ -41,28 +104,29 @@ B
 
 
 <tr>
-<td><button type="button"><b>Bold</b></button></td>
-<td><button type="button"><i>Italic</i></button></td>
-<td><button type="button"><u>Underline<u></button></td>
-<td>Select color<br><select onchange="changecolor(this)">
+<td><button class="bold" type="button" onClick="toggleBold();">Bold</button></td>
+<td><button class="italic" type="button" onClick="toggleItalic();">Italic</button></td>
+<td><button class="underline" type="button" onClick="toggleUnder();">Underline</button></td>
+<td>Select color<br><select onchange="changeColor(this.value);">
+  <option class="black" value="Black">Black</option>
   <option class="red" value="Red">Red</option>
   <option class="blue" value="Blue">Blue</option>
-  <option class="black" value="Black">Black</option>
   <option class="yellow" value="Yellow">Yellow</option>
   <option class="purple" value="Purple">Purple</option>
   <option class="green" value="Green">Green</option>
 </select></td>
-<td>Select Font <br><select>
+<td>Select Font <br><select onchange="toggleFont(this.value);">
   <option class="times" value="times new roman">Times new Roman</option>
   <option class="arial" value="arial">Arial</option>
   <option class="lucida" value="lucida sans">Lucida Sans</option>
+  <option class="courier" value="courier">Courier New</option>
 </select></td>
 
 </tr>
 </tbody>
+</table>
 
 
 
-</div>
 
 </body>
