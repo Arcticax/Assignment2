@@ -60,13 +60,36 @@
         document.getElementById("id1").style.fontFamily="Courier New";
       }
 }
-function changergb() 
+function changergb()
 { console.log(document.getElementById("id1"));
   document.getElementById("id1").style.backgroundColor =
   "rgb("+document.getElementById("red").value+","
   +document.getElementById("green").value+","
   +document.getElementById("blue").value+")";
 
+}
+function validate(evt) {
+  var theEvent = evt || window.event;
+  var key = theEvent.keyCode || theEvent.which;
+  key = String.fromCharCode( key );
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+function allownums(cell, value){
+   var num = parseInt(value,10);
+   if(num <0 || num>255) {
+      confirm('Please use Numbers in the standard RGB range (0-255)');
+      if (cell == 1) {
+          document.getElementById("red").value = "0";
+      } else if (cell == 2) {
+          document.getElementById("green").value = "0";
+      } else {
+          document.getElementById("blue").value = "0";
+      }
+   }
 }
 
 
@@ -86,17 +109,17 @@ RGB value boxes
 !-->
 
 </td>
-<td>
+<td rowspan="2">
   R
-    <input id="red" type="text" size="3" maxlength="3" name="r" value="0" onBlur="changergb()">
+    <input id="red" type="text" size="3" maxlength="3" name="r" value="0" onchange='allownums(1, this.value)' onkeypress='validate(event)' onBlur="changergb()">
     </td>
-    <td>
+    <td rowspan="2">
     G
-    <input id="green" type="text" size="3" maxlength="3" name="g" value="0" onBlur="changergb()">
+    <input id="green" type="text" size="3" maxlength="3" name="g" value="0" onchange='allownums(2, this.value)' onkeypress='validate(event)' onBlur="changergb()">
     </td>
-    <td>    
+    <td rowspan="2">
     B
-    <input id="blue" type="text" size="3" maxlength="3" name="b" value="0" onBlur="changergb()">
+    <input id="blue" type="text" size="3" maxlength="3" name="b" value="0" onchange='allownums(3, this.value)' onkeypress='validate(event)' onBlur="changergb()">
 </td>
 </tr>
 
